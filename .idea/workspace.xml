@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="010becdf-115c-44e7-adad-a25355bacb79" name="Default" comment="" />
+    <ignored path="DataClean.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/DataClean$dataClean.coverage" NAME="dataClean Coverage Results" MODIFIED="1435707921415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="DataClean" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataClean.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataClean.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.19927536" vertical-offset="400" max-vertical-offset="952">
+              <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+              <folding>
+                <element signature="e#22#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="23443">
+              <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+              <folding>
+                <marker date="1435707922523" expanded="true" signature="4:371" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="410:787" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="826:1202" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="1241:1616" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="1655:2033" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="2072:2448" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="2487:2856" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="2895:3263" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="3302:3672" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="3711:4090" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="4129:4496" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="4535:4903" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="4942:5318" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="5357:5731" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="5770:6149" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="6188:6566" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="6605:6977" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="7016:7394" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="7433:7797" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="7836:8208" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="8247:8623" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="8662:9035" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="9074:9440" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="9479:9852" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="9891:10267" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="10306:10671" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="10710:11077" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="11116:11493" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="11532:11908" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="11947:12311" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="12350:12715" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="12754:13127" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="13166:13538" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="13577:13960" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="13999:14368" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="14407:14782" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="14821:15187" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="15226:15588" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="15627:15992" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="16031:16377" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="16416:16762" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="16801:17146" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="17185:17530" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="17569:17939" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="17978:18351" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="18390:18762" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="18801:19172" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="19211:19582" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="19621:20002" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="20041:20417" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="20456:20826" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="20865:21222" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="21261:21628" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="21667:22029" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="22068:22448" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="22487:22866" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="22905:23275" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="23314:23699" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="23738:24113" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="24152:24523" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="24562:24939" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="24978:25354" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="25393:25776" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="25815:26184" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="26223:26590" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="26629:26996" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="27035:27383" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="27422:27773" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="27812:28161" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="28200:28549" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="28588:28937" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="28976:29325" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="29364:29713" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="29752:30101" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="30140:30489" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="30528:30899" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="30938:31305" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="31344:31716" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="31755:32125" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="32164:32520" placeholder="{&quot;Brand&quot;: &quot;SOUTHWEST&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="32559:32912" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="32951:33304" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="33343:33696" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="33735:34088" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="34127:34480" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="34519:34872" placeholder="{&quot;Brand&quot;: &quot;PAC&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="34911:35264" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="35303:35656" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="35695:36048" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="36087:36440" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="36479:36840" placeholder="{&quot;Brand&quot;: &quot;PAC&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="36879:37256" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="37295:37672" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="37711:38064" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="38103:38457" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="38496:38850" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="38889:39247" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+                <marker date="1435707922523" expanded="true" signature="39286:39658" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/dataClean.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="960" />
+    <option name="width" value="960" />
+    <option name="height" value="1032" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataClean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataClean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataClean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataClean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataClean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="C:/Python34/python3.exe" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rowbot\PycharmProjects\DataClean" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.dataClean">
+    <configuration default="false" name="dataClean" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataClean.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DataClean" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.dataClean" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.dataClean" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="010becdf-115c-44e7-adad-a25355bacb79" name="Default" comment="" />
+      <created>1435684861479</created>
+      <option name="number" value="Default" />
+      <updated>1435684861479</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="960" y="0" width="960" height="1032" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33522728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17409766" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946922" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataClean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1043035">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding>
+            <marker date="1435707922523" expanded="true" signature="4:371" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="410:787" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="826:1202" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="1241:1616" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="1655:2033" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="2072:2448" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="2487:2856" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="2895:3263" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="3302:3672" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="3711:4090" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="4129:4496" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="4535:4903" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="4942:5318" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="5357:5731" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="5770:6149" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="6188:6566" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="6605:6977" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="7016:7394" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="7433:7797" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="7836:8208" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="8247:8623" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="8662:9035" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="9074:9440" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="9479:9852" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="9891:10267" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="10306:10671" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="10710:11077" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="11116:11493" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="11532:11908" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="11947:12311" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="12350:12715" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="12754:13127" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="13166:13538" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="13577:13960" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="13999:14368" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="14407:14782" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="14821:15187" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="15226:15588" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="15627:15992" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="16031:16377" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="16416:16762" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="16801:17146" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="17185:17530" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="17569:17939" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="17978:18351" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="18390:18762" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="18801:19172" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="19211:19582" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="19621:20002" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="20041:20417" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="20456:20826" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="20865:21222" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="21261:21628" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="21667:22029" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="22068:22448" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="22487:22866" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="22905:23275" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="23314:23699" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="23738:24113" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="24152:24523" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="24562:24939" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="24978:25354" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="25393:25776" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="25815:26184" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="26223:26590" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="26629:26996" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="27035:27383" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="27422:27773" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="27812:28161" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="28200:28549" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="28588:28937" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="28976:29325" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="29364:29713" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="29752:30101" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="30140:30489" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="30528:30899" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="30938:31305" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="31344:31716" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="31755:32125" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="32164:32520" placeholder="{&quot;Brand&quot;: &quot;SOUTHWEST&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="32559:32912" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="32951:33304" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="33343:33696" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="33735:34088" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="34127:34480" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="34519:34872" placeholder="{&quot;Brand&quot;: &quot;PAC&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="34911:35264" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="35303:35656" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="35695:36048" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="36087:36440" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="36479:36840" placeholder="{&quot;Brand&quot;: &quot;PAC&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="36879:37256" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="37295:37672" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="37711:38064" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="38103:38457" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="38496:38850" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="38889:39247" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+            <marker date="1435707922523" expanded="true" signature="39286:39658" placeholder="{&quot;Brand&quot;: &quot;&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataClean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19927536" vertical-offset="400" max-vertical-offset="952">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding>
+            <element signature="e#22#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
