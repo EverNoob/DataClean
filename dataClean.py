@@ -42,7 +42,8 @@ sh = wb.sheet_by_index(0)
 
 # List to hold dictionaries
 data_list = []
-print (sh.nrows)
+
+
 build_lookup_tables()
 print(varietal_dict)
 # Iterate through each row in worksheet and fetch values into dict
