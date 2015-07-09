@@ -1,14 +1,14 @@
+#! python 3
 __author__ = 'Rowbot'
 import xlrd
 from collections import OrderedDict
 import simplejson as json
 
 #objects related to lookup sheet functions
-lookup_sheet_names = ['NAV Region', 'Region Rep', 'Brand Code','Varietals Code', 'Brand Associations', 'Brand Name Changes' ]
+lookup_sheet_names = ['NAV Region', 'Region Rep', 'Brand Code',
+                      'Varietals Code', 'Brand Associations', 'Brand Name Changes']
 varietal_dict = {}
 distributor_dict = {}
-
-
 
 def remove_vintage(n):
     return n[0:-3] + n[-1]
@@ -26,31 +26,6 @@ def build_lookup_tables():
     varietal_dict = build_lookup_dict(look_wb,'Varietals Code',1)
     #distributor_dict = build_lookup_dict(look_wb,'')
     return
-
-def build_lookup_dict(lookup_wb, sheet_name,value_column):
-    temp = {}
-    lookup_ws = lookup_wb.sheet_by_name(sheet_name)
-    for i in range(1,lookup_ws.nrows):
-        temp[lookup_ws.cell(i,0).value] = lookup_ws.cell(i,1).value
-    return temp
-
-
-# Open the workbook and select the first worksheet
-wb = xlrd.open_workbook('Input/Dirty Data.xlsx')
-sh = wb.sheet_by_index(0)
-
-#open lookup workbook and grab worksheets
-wb_lookup = xlrd.open_workbook('Lookup Tables/Lookup Tables.xlsx')
-ws_navregion = wb_lookup.sheet_by_name('NAV Region')
-ws_regionrep = wb_lookup.sheet_by_name('Region Rep')
-ws_brandcode = wb_lookup.sheet_by_name('Brand Code')
-ws_varietalscode = wb_lookup.sheet_by_name('Varietals Code')
-ws_brandassoc = wb_lookup.sheet_by_name('Brand Associations')
-ws_brandnamechanges = wb_lookup.sheet_by_name('Brand Name Changes')
-
-
-# Dictionary to hold dictionaries
-raw_data_list = []
 
 def build_json_from_ws(ws):
     temp_list = []
@@ -87,15 +62,33 @@ def build_twoitem_lookup_dict(ws,reverse=False):
             temp_dict[row_values[0]] = row_values[1]
     return temp_dict
 
+def build_brandassoc_lookup(ws_brandassoc):
+    baj = build_json_from_ws(ws_brandassoc)
+    temp_dict = {}
+    for item in baj:
+        temp_dict[item['Brand Code']] = item
+    return temp_dict
 
 def prettyprint(d):
     print(json.dumps(d, sort_keys=True, indent=4 * ' '))
 
-prettyprint(build_navregion_lookup_dict(ws_navregion))
-prettyprint(build_regionrep_lookup_dict(ws_regionrep))
-prettyprint(build_twoitem_lookup_dict(ws_brandcode,reverse=True))
 
-def build_raw_list():
+def build_lookup_dict():
+    temp_dict = {}
+    #open lookup workbook and grab worksheets
+    wb_lookup = xlrd.open_workbook('Lookup Tables/Lookup Tables.xlsx')
+    temp_dict['NAV Region'] = build_twoitem_lookup_dict(wb_lookup.sheet_by_name('NAV Region'))
+    temp_dict['Region Rep'] = build_twoitem_lookup_dict(wb_lookup.sheet_by_name('Region Rep'))
+    temp_dict['Brand Code'] = build_twoitem_lookup_dict(wb_lookup.sheet_by_name('Brand Code'), reverse=True)
+    temp_dict['Varietals Code'] = build_twoitem_lookup_dict(wb_lookup.sheet_by_name('Varietals Code'))
+    temp_dict['Brand Associations'] = build_brandassoc_lookup(wb_lookup.sheet_by_name('Brand Associations'))
+    temp_dict['Brand Name Changes'] = build_twoitem_lookup_dict(wb_lookup.sheet_by_name('Brand Name Changes'))
+    return temp_dict
+
+def build_lookup_json():
+    return json.dumps([build_lookup_dict()], sort_keys=True, indent=4 * ' ')
+
+def build_raw_list(sh):
     global i, temp_list, rownum, row_values, data_item
     # Iterate through each row in worksheet and fetch values into dict
     # for rownum in range(2, sh.nrows):
@@ -108,7 +101,6 @@ def build_raw_list():
             4] and "zBarter" not in row_values[0] and row_values[2] != "":
             data_item = {}
             i += 1
-            print(i)
             row_values = sh.row_values(rownum)
             data_item['Customer Name'] = row_values[0]
             data_item['Ship-to State'] = row_values[1]
@@ -130,36 +122,48 @@ def build_raw_list():
             data_item['Varietal Code'] = row_values[17]
 
             temp_list.append(data_item)
+    print(i)
     return temp_list
 
-def generate_clean_data_list(rdl):
+def generate_clean_data_list(rdl, lud):
     scrubbed_data_list = []
-    clean_objdict = {}
     for raw_dict in rdl:
+        clean_objdict = {}
         clean_objdict['Item code w/o vintage'] = remove_vintage(raw_dict['Item No.'])
         clean_objdict['Brand Code'] = raw_dict['Brand Code']
-        clean_objdict['']
+        clean_objdict['Brand'] = lud["Brand Associations"][raw_dict['Brand Code']]
+        scrubbed_data_list.append(clean_objdict)
+    return scrubbed_data_list
 
+def main():
 
+    # Open the workbook and select the first worksheet
+    wb = xlrd.open_workbook('Input/Dirty Data.xlsx')
+    sh = wb.sheet_by_index(0)
 
-# def generate_brand_lookup():
-#     xlrd.
+    raw_data_list = build_raw_list(sh)
 
-raw_data_list = build_raw_list()
+    print ("the size of data_list: " + str(len(raw_data_list)))
+    # Serialize the list of dicts to JSON
+    j = json.dumps(raw_data_list, sort_keys=True, indent=4 * ' ')
+    L = build_lookup_json()
+    lud = build_lookup_dict()
+    #print(j)
 
-    # for item in raw_data_list:
-    #     if item[]
+    # Write to file
+    with open('data.json', 'w') as f:
+        f.write(j)
+        f.close()
 
-print ("the size of data_list: " + str(len(raw_data_list)))
-# Serialize the list of dicts to JSON
-j = json.dumps(raw_data_list, sort_keys=True, indent=4 * ' ')
-#print(j)
+    with open('lookup.json','w') as f:
+        f.write(L)
+        f.close()
 
-# Write to file
-with open('data.json', 'w') as f:
-    f.write(j)
+    prettyprint(generate_clean_data_list(raw_data_list, lud))
 
-# Dictionary for scrubbed data
+    # Dictionary for scrubbed data
 
-clean_data= {}
+    clean_data= {}
 
+if __name__ == '__main__':
+    main()
