@@ -4,6 +4,7 @@ import simplejson as json
 import openpyxl
 import xlrd
 
+
 def json_to_csv(jsonfilepath, outfilepath):
    json_dict = json.load(jsonfilepath)
    outfile = open(outfilepath,mode='w')
@@ -11,12 +12,12 @@ def json_to_csv(jsonfilepath, outfilepath):
    for header in column_headers:
        outfile.write(str(header)+',')
 
-def build_lookup_from_clean_dataset():
-    wb = openpyxl.load_workbook('Cleaned data file/ShipData61815 - Example.xlsx')
-    ws = wb.get_active_sheet()
 
-    width = ws.get_highest_column()
-    depth = ws.get_highest_row()
+# def build_lookup_from_clean_dataset():
+#     wb = openpyxl.load_workbook('Cleaned data file/ShipData61815 - Example.xlsx')
+#     ws = wb.get_active_sheet()
+#     width = ws.get_highest_column()
+#     depth = ws.get_highest_row()
 
 
 def build_json_from_clean():
@@ -49,13 +50,14 @@ def main():
     wb = openpyxl.Workbook()
     wb.create_sheet(title='Brand Code')
     ws = wb.get_sheet_by_name('Brand Code')
-    i = 0
-    ws.cell(rowx=1, column=1).value = 'Brand Name'
+    i = 1
+    ws.cell(row=1, column=1).value = 'Brand Name'
     ws.cell(row=1, column=2).value = 'Brand Code'
     for key in test.keys():
         ws.cell(row=i,column=1).value = key
         ws.cell(row=i, column=2).value = test[key]
         i += 1
+    wb.save('testlookup.xlsx')
 
 
 
