@@ -5,8 +5,10 @@ import openpyxl
 import simplejson as json
 import datetime as dt
 
+__libchange__ = False
 
 size_dict = {'B': '750ml', 'E': '375ml', 'A': '750ml'}
+
 
 def remove_vintage(n):
     return n[0:-3] + n[-1]
@@ -133,6 +135,8 @@ def build_brand_lookup():
     wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     brand_dict = {}
+    state_dict = {}
+
     for rownum in range(2, ws.get_highest_row()+1):
         brand_dict[ws.cell(row=rownum, column=1).value] = {'Brand Code': ws.cell(row=rownum, column=2).value,
                                                            'Brand': ws.cell(row=rownum, column=3).value,
@@ -146,12 +150,37 @@ def build_brand_lookup():
                                                            'IBM': ws.cell(row=rownum, column=28).value,
                                                            'SKU Cost': ws.cell(row=rownum, column=31).value
                                                            }
-    return brand_dict
+        state_dict[ws.cell(row=rownum, column=6).value] = ws.cell(row=rownum, column=7).value
+
+    return brand_dict, state_dict
+
+
+
+
+
+def change_canada_region(obj_dict, state_dict):
+    sr = obj_dict['Sales Rep'].lower()
+    pf = obj_dict['Portfolio'].lower()
+    if 'canada' in sr:
+        obj_dict['State'] = 'Canada'
+        if sr[0] is 'e':
+            obj_dict['Sales Rep'] = 'East Canada'
+        else:
+            obj_dict['Sales Rep'] = 'West Canada'
+    if 'in' in sr:
+        obj_dict['Sales Rep'] = 'International'
+        #cover the instance where there is a new distributor
+        if obj_dict['Distributor'] in state_dict:
+            obj_dict['State'] = state_dict[obj_dict['Distributor']]
+    if 'sales shipment' in obj_dict['Document Type'].lower() and ('core' in pf or 'v&e' in pf):
+        obj_dict['Sales Rep'] = 'Precept House'
+
+    return obj_dict
 
 
 def generate_clean_data_list(rdl):
     scrubbed_data_list = []
-    brand_dict = build_brand_lookup()
+    brand_dict, state_dict = build_brand_lookup()
 
     for raw_dict in rdl:
         clean_objdict = {}
@@ -166,6 +195,7 @@ def generate_clean_data_list(rdl):
         clean_objdict['Item ID'] = raw_dict['Item No.']
         clean_objdict['Item'] = raw_dict['Description']
         clean_objdict['SKU Tag'] = brand_dict[itemcode]['SKU Tag']
+        clean_objdict['Item Pre'] = raw_dict['Item No.'][:8]
         clean_objdict['Size'] = itemcode[-1]
         clean_objdict['Month'] = raw_dict['Posting Month']
         clean_objdict['Year'] = raw_dict['Year']
@@ -179,7 +209,12 @@ def generate_clean_data_list(rdl):
         clean_objdict['Vintage'] = raw_dict['Vintage']
         clean_objdict['Portfolio'] = brand_dict[itemcode]['Portfolio']
         clean_objdict['Category'] = brand_dict[itemcode]['Category']
-        clean_objdict[]
+        clean_objdict['Sales/Key Acct Rep'] = brand_dict['Sales/Key Acct Rep']
+        clean_objdict['ISM'] = brand_dict['ISM']
+        clean_objdict['IBM'] = brand_dict['IBM']
+        clean_objdict['Customer ID'] = raw_dict['Customer No.']
+        clean_objdict['Sales FOB'] = raw_dict['Sales Amount (Actual)'] / raw_dict['Quantity (positive)']
+        clean_objdict['SKU Cost'] = 'PlaceHolder'
 
 
         scrubbed_data_list.append(clean_objdict)
