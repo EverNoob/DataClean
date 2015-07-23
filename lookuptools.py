@@ -24,6 +24,7 @@ def build_brand_lookup():
     with open('JSON Files/brandlookup.json', 'w') as f:
         f.write(json.dumps(brand_dict, sort_keys=True, indent=4 * ' '))
 
+
 def build_innovation_lookup():
     wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
