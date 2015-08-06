@@ -78,23 +78,6 @@ def build_state_by_distributor_lookup():
         f.write(json.dumps(state_by_distributor_dict, sort_keys=True, indent=4 * ' '))
 
 
-# def build_state_by_region_lookup():
-#     regions_to_delete = ['Airlines', 'California Region']
-#     wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
-#     ws = wb.get_sheet_by_name('Sheet1')
-#     region_by_state_dict = {}
-#     for rownum in range(2, ws.get_highest_row() + 1):
-#         region = ws.cell(row=rownum, column=8).value
-#         state = ws.cell(row=rownum, column=7).value
-#         if region in region_by_state_dict:
-#             if state not in region_by_state_dict[region]:
-#                 region_by_state_dict[region].append(state)
-#         else:
-#             region_by_state_dict[region] = [state]
-#     return region_by_state_dict
-#     with open('JSON Files/statebyregion.json', 'w') as f:
-#         f.write(json.dumps(region_by_state_dict, sort_keys=True, indent=4 * ' '))
-
 def build_region_by_state_lookup():
     wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
@@ -132,8 +115,62 @@ def build_varietal_lookup():
     with open('JSON Files/varietalbycode.json', 'w') as f:
         f.write(json.dumps(varietal_by_code, sort_keys=True, indent=4 * ' '))
 
+def build_naluai_brands_list():
+    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
+    ws = wb.get_sheet_by_name('Naluai Brands')
+    naluai_brands = []
+    for rownum in range(2, ws.get_highest_row() +1):
+        brand = ws.cell(row=rownum, column=1).value
+        naluai_brands.append(brand)
+    with open('JSON Files/naluai_brand_list.json', 'w') as f:
+        f.write(json.dumps(naluai_brands, sort_keys=True, indent=4 * " "))
 
-build_varietal_lookup()
+def build_gangel_brands_list():
+    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
+    ws = wb.get_sheet_by_name('Gangel Brands')
+    gangel_brands = []
+    for rownum in range(2, ws.get_highest_row() +1):
+        brand = ws.cell(row=rownum, column=1).value
+        gangel_brands.append(brand)
+    with open('JSON Files/gangel_brand_list.json', 'w') as f:
+        f.write(json.dumps(gangel_brands, sort_keys=True, indent=4 * " "))
+
+
+def build_swift_brands_list():
+    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
+    ws = wb.get_sheet_by_name('Swift Brands')
+    swift_brands = []
+    for rownum in range(2, ws.get_highest_row() +1):
+        brand = ws.cell(row=rownum, column=1).value
+        swift_brands.append(brand)
+    with open('JSON Files/swift_brand_list.json', 'w') as f:
+        f.write(json.dumps(swift_brands, sort_keys=True, indent=4 * " "))
+
+def build_salesperson_brands_list(salesperson_name):
+    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
+    ws = wb.get_sheet_by_name("" + salesperson_name + ' Brands')
+    brands = []
+    for rownum in range(2, ws.get_highest_row() +1):
+        brand = ws.cell(row=rownum, column=1).value
+        brands.append(brand)
+    with open('JSON Files/' + salesperson_name.lower() + '_brand_list.json', 'w') as f:
+        f.write(json.dumps(brands, sort_keys=True, indent=4 * " "))
+
+
+def build_size_lookup():
+    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
+    ws = wb.get_active_sheet()
+    size_dict = {}
+    for rownum in range(2, ws.get_highest_row() +1):
+        size_code = ws.cell(row=rownum, column=13).value
+        size = ws.cell(row=rownum, column=11).value.split(' ')[-1]
+        if size_code not in size_dict:
+            size_dict[size_code] = size
+    with open('JSON Files/size_by_letter_code.json', 'w') as f:
+        f.write(json.dumps(size_dict, sort_keys=True, indent=4 * " "))
+
+
+build_salesperson_brands_list('Nelson')
 
 
 

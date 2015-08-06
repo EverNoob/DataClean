@@ -37,7 +37,7 @@ def build_brandcode_lookup(jsf):
 
 
 def main():
-    j = json.dumps(build_json_from_clean('Cleaned data file/ShipData61815 - Example.xlsx'), sort_keys=True, indent= 4 * ' ')
+    j = json.dumps(build_json_from_clean('Cleaned data file/ShipData61815 - Example.xlsx'), sort_keys=True, indent=4 * ' ')
     with open('clean.json', 'w') as f:
         f.write(j)
         f.close()
