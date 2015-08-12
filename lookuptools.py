@@ -5,7 +5,7 @@ import simplejson as json
 
 
 def build_brand_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File Updated.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     brand_dict = {}
     for rownum in range(2, ws.get_highest_row() + 1):
@@ -170,7 +170,7 @@ def build_size_lookup():
         f.write(json.dumps(size_dict, sort_keys=True, indent=4 * " "))
 
 
-build_salesperson_brands_list('Nelson')
+build_brand_lookup()
 
 
 
