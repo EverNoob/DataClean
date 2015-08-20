@@ -182,7 +182,6 @@ def generate_clean_data_list(rdl):
         # brand dicionary dependent items
         if itemid in brand_dict:
             if distributor in brand_dict[itemid]:
-                print('Distributor has been found')
                 clean_objdict['Brand'] = brand_dict[itemid][distributor]['Brand']
                 clean_objdict['SKU Tag'] = brand_dict[itemid][distributor]['SKU Tag']
                 clean_objdict['Portfolio'] = brand_dict[itemid][distributor]['Portfolio']
@@ -432,7 +431,7 @@ def write_to_excel(filename, datalist):
             for i in range(0, len(uselesslist)):
                 ws.cell(row=rownum, column=i + 1).value = item[uselesslist[i]]
         except KeyError as ke:
-            print("IT was himmm>>> " + ws.cell(row=rownum, column=1).value)
+            print("IT was himmm what caused the keyError>>> " + ws.cell(row=rownum, column=1).value)
 
         rownum += 1
     wb.save(filename)
@@ -445,7 +444,12 @@ def main():
 
     raw_data_list = build_raw_list(shtest)
 
-    write_to_excel('Cleaned data file/megatest17.xlsx', generate_clean_data_list(raw_data_list))
+    clean_data = generate_clean_data_list(raw_data_list)
+
+    with open('JSON Files/data.json', 'w') as f:
+        f.write(json.dumps(clean_data, sort_keys=True, indent=4 * ' '))
+
+    write_to_excel('Cleaned data file/megatest17.xlsx', clean_data)
 
 
 if __name__ == '__main__':
