@@ -66,7 +66,7 @@ class ScrubDataModel(QAbstractTableModel):
                 print(ie)
                 print('row:', index.row(), ', column:', index.column())
         else:
-            print('None returned to data() call')
+            print("Role: ", role, " rejected access to data")
             return None
 
     def headerData(self, section, orientation, role=Qt.DisplayRole):

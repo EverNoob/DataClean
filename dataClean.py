@@ -264,17 +264,7 @@ def generate_clean_data_list(rdl):
                         clean_objdict['IBM'] = '#N/A'
                         clean_objdict['SKU Cost'] = '#N/A'
                 except KeyError as ke:
-                    print('HES the ONE YOU WANt, SIEZE HIM>>' + clean_objdict['Item ID'])
-
-        # if 'Sales/Key Acct Rep' not in clean_objdict:
-        #     if raw_dict['Salesperson Code'] in region_spelling_dict:
-        #             clean_objdict['Sales/Key Acct Rep'] = sales_rep_by_region[region_spelling_dict[raw_dict['Salesperson Code']]]
-        #     else:
-        #         state = raw_dict['Ship-to State']
-        #         if state is not "":
-        #             clean_objdict['Sales/Key Acct Rep'] = sales_rep_by_region[region_by_state_dict[raw_dict['Ship-to State']]]
-        #         else:
-        #             clean_objdict['Sales/Key Acct Rep'] = "#N/A"
+                    print('HES the ONE YOU WANt, SEIZE HIM>>' + clean_objdict['Item ID'])
 
         #Initiate data scrub
         clean_objdict = refine_item_data(clean_objdict,
