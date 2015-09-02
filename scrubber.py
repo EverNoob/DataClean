@@ -1,4 +1,3 @@
-import openpyxl
 import dataClean
 
 __author__ = 'Rowbot'
@@ -11,7 +10,7 @@ from PySide.QtCore import QRect
 from PySide.QtGui import (QApplication, QMainWindow, QWidget,
                           QGridLayout, QTabWidget, QTableView,
                           QMenuBar, QMenu, QAction,
-                          QFont, QVBoxLayout, QFileDialog, QPushButton, QToolBar, QIcon)
+                          QFont, QVBoxLayout, QFileDialog, QPushButton, QToolBar, QIcon, QHBoxLayout)
 
 
 class CleanDisplay(QMainWindow):
@@ -38,15 +37,11 @@ class CleanDisplay(QMainWindow):
         self.tabContainer.addTab(self.rawledger_tab, "Raw Ledger Data")
         self.process_button = QPushButton("&Process File", self)
         self.process_button.clicked.connect(self.process)
-        rawledgertab_layout.addWidget(self.process_button)
-        # Revision Tab
-        self.revision_tab = QWidget()
-        self.revision_tab.setFont(font)
-        revision_tab_layout = QGridLayout(self.revision_tab)
-        self.revision_tableview = QTableView()
-        revision_tab_layout.addWidget(self.revision_tableview)
-        self.tabContainer.addTab(self.revision_tab, "Revision")
-        self.revision_tableview.setSortingEnabled(True)
+        rawledger_hbox = QHBoxLayout()
+        rawledger_hbox.addStretch(1)
+        rawledger_hbox.addWidget(self.process_button)
+        rawledger_hbox.addStretch(1)
+        rawledgertab_layout.addLayout(rawledger_hbox)
         ## Results Tab
         self.results_tab = QWidget()
         self.results_tab.setFont(font)
@@ -58,8 +53,26 @@ class CleanDisplay(QMainWindow):
         self.setCentralWidget(centralwidget)
         self.export_button = QPushButton("&Export", self)
         self.export_button.clicked.connect(self.export_results)
-        results_tab_layout.addWidget(self.export_button)
+        self.process_button2 = QPushButton('&Process', self)
+        self.process_button2.setFixedHeight(30)
+        self.process_button2.setFixedWidth(120)
+        self.process_button2.clicked.connect(self.process)
+        results_hbox = QHBoxLayout()
+        results_hbox.addStretch(1)
+        results_hbox.addWidget(self.process_button2)
+        results_hbox.addWidget(self.export_button)
+        results_vbox = QVBoxLayout()
+        results_vbox.addLayout(results_hbox)
+        results_tab_layout.addLayout(results_vbox)
         self.results_tableview.setSortingEnabled(True)
+        # Revision Tab
+        self.revision_tab = QWidget()
+        self.revision_tab.setFont(font)
+        revision_tab_layout = QGridLayout(self.revision_tab)
+        self.revision_tableview = QTableView()
+        revision_tab_layout.addWidget(self.revision_tableview)
+        self.tabContainer.addTab(self.revision_tab, "Revision")
+        self.revision_tableview.setSortingEnabled(True)
         # Menu Bar/ Menus
         menubar = QMenuBar(self)
         menubar.setGeometry(QRect(0, 0, 800, 29))
@@ -80,7 +93,12 @@ class CleanDisplay(QMainWindow):
         self.menu_File.addAction(self.action_save)
         #toolbar
         self.toolbar = QToolBar()
-        self.toolbar.addActions(self.action_open.setIcon(), self.action_process, self.action_save)
+        self.editAction(self.action_open, None, 'ctrl+o', 'open', 'Open')
+        self.editAction(self.action_process, None, 'ctrl+p', 'process', 'Process Raw Ledger Data')
+        self.editAction(self.action_save, None, 'ctrl+s', 'save', 'Save')
+        self.toolbar.addActions((self.action_open, self.action_process, self.action_save))
+
+        self.addToolBar(self.toolbar)
 
         #Process
 
@@ -102,9 +120,7 @@ class CleanDisplay(QMainWindow):
             self.filename = fname
 
     def loadfile(self, fname=None):
-        wb = openpyxl.load_workbook(fname)
-        sh = wb.get_active_sheet()
-        self.raw_data = dataClean.build_raw_list(sh)
+        self.raw_data = dataClean.build_raw_list(filename=fname)
         self.rawledger_TableView.setModel(scrubdatamodel.ScrubDataModel(self, self.raw_data,
                                                                        scrubdatamodel.ScrubDataModel.dirtyheader))
 
@@ -126,7 +142,7 @@ class CleanDisplay(QMainWindow):
         '''This method adds to action: icon, shortcut, ToolTip,\
         StatusTip and can connect triggered action to slot '''
         if icon is not None:
-            action.setIcon(QIcon(":/%s.png" % (icon)))
+            action.setIcon(QIcon("Icons/actions/%s.png" % (icon)))
         if shortcut is not None:
             action.setShortcut(shortcut)
         if tip is not None:
@@ -136,8 +152,12 @@ class CleanDisplay(QMainWindow):
             action.triggered.connect(slot)
         return action
 
-if __name__ == '__main__':
+
+def main():
     app = QApplication(sys.argv)
     frame = CleanDisplay()
     frame.show()
     sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()

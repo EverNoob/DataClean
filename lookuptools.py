@@ -5,7 +5,7 @@ import simplejson as json
 
 
 def build_brand_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File Updated.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/mainDB.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     brand_dict = {}
     for rownum in range(2, ws.get_highest_row() + 1):
@@ -140,7 +140,7 @@ def build_swift_brands_list():
     wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
     ws = wb.get_sheet_by_name('Swift Brands')
     swift_brands = []
-    for rownum in range(2, ws.get_highest_row() +1):
+    for rownum in range(2, ws.get_highest_row() + 1):
         brand = ws.cell(row=rownum, column=1).value
         swift_brands.append(brand)
     with open('JSON Files/swift_brand_list.json', 'w') as f:
@@ -150,7 +150,7 @@ def build_salesperson_brands_list(salesperson_name):
     wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
     ws = wb.get_sheet_by_name("" + salesperson_name + ' Brands')
     brands = []
-    for rownum in range(2, ws.get_highest_row() +1):
+    for rownum in range(2, ws.get_highest_row() + 1):
         brand = ws.cell(row=rownum, column=1).value
         brands.append(brand)
     with open('JSON Files/' + salesperson_name.lower() + '_brand_list.json', 'w') as f:
@@ -169,8 +169,18 @@ def build_size_lookup():
     with open('JSON Files/size_by_letter_code.json', 'w') as f:
         f.write(json.dumps(size_dict, sort_keys=True, indent=4 * " "))
 
+def build_brand_manager_lookups():
+    wb = openpyxl.load_workbook('Lookup Tables/Brand Manager Lookup.xlsx')
+    lookup_dict = {}
+    for ws_name in wb.get_sheet_names():
+        brand_manager_name = ws_name.split()[0]
+        ws = wb.get_sheet_by_name(ws_name)
+        for rownum in range(2, ws.get_highest_row() + 1):
+            lookup_dict[ws.cell(row=rownum, column=1).value] = brand_manager_name
+    with open('JSON Files/brand_manager_by_brand.json', 'w') as f:
+        f.write(json.dumps(lookup_dict, sort_keys=True, indent=4 * " "))
 
-build_brand_lookup()
+build_brand_manager_lookups()
 
 
 

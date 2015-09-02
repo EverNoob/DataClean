@@ -3,13 +3,14 @@ __author__ = 'Rowbot'
 
 import openpyxl
 import simplejson as json
+import time
 import datetime as dt
-import re
+
 
 __libchange__ = False
 
-size_dict = {'B': '750ml', 'E': '375ml', 'A': '750ml'}
-region_spelling_dict = {'MIDATLANTI': 'Mid Atlantic',
+
+REGION_SPELLING_DICT = {'MIDATLANTI': 'Mid Atlantic',
                         'NEW ENGLAN': 'New England',
                         'TRI-STATES': 'Tri-States',
                         'CENTRAL': 'Central',
@@ -22,19 +23,15 @@ region_spelling_dict = {'MIDATLANTI': 'Mid Atlantic',
                         'SOUTHWEST': 'Southwest',
                         'IN': 'International'
 }
-innovation_east = ['Mid Atlantic', 'New England', 'Tri-States', 'Carolinas', 'Florida', 'Gulf States']
+INNOVATION_EAST = ['Mid Atlantic', 'New England', 'Tri-States', 'Carolinas', 'Florida', 'Gulf States']
 
-uselesslist = ['Item code w/o vintage', 'Brand Code', 'Brand', 'Varietal Code', 'Varietal', 'Distributor', 'State',
-               'Sales Rep', 'Item ID', 'Item', 'SKU Tag', 'Item Pre', 'Size', 'Month', 'Year', 'Date', 'Document Type',
-               'Warehouse', 'Document #', 'Opposite #', 'Sales $', 'Total Cases', 'Vintage', 'Portfolio', 'Category',
-               'Sales/Key Acct Rep', 'ISM', 'IBM', 'Customer ID', 'Sales FOB', 'SKU Cost', 'SKU DA', 'Total DA$',
-               'GP$/CASE', 'Total GP$']
+KEY_LIST = ['Item code w/o vintage', 'Brand Code', 'Brand', 'Varietal Code', 'Varietal', 'Distributor', 'State',
+            'Sales Rep', 'Item ID', 'Item', 'SKU Tag', 'Item Pre', 'Size', 'Month', 'Year', 'Date', 'Document Type',
+            'Warehouse', 'Document #', 'Opposite #', 'Sales $', 'Total Cases', 'Vintage', 'Portfolio', 'Category',
+            'Sales/Key Acct Rep', 'ISM', 'IBM', 'Customer ID', 'Sales FOB', 'SKU Cost', 'SKU DA', 'Total DA$',
+            'GP$/CASE', 'Total GP$']
 
 new_items = []
-
-
-def remove_vintage(n):
-    return n[0:-3] + n[-1]
 
 
 def excel_date(date1):
@@ -42,29 +39,55 @@ def excel_date(date1):
     delta = date1 - temp
     return float(delta.days)
 
-
-def build_regionrep_lookup_dict():
-    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
-    ws = wb.get_sheet_by_name('Region Rep')
-    temp_dict = {}
-    for rownum in range(2, ws.get_highest_row() + 1):
-        # TODO find out if the above line is including or overshooting the last row
-        temp_dict[ws.cell(row=rownum, column=1).value] = ws.cell(row=rownum, column=2).value
-    return temp_dict
-
-
 def prettyprint(d):
     print(json.dumps(d, sort_keys=True, indent=4 * ' '))
 
+def write_to_excel(filename, datalist):
+    wb = openpyxl.Workbook()
+    ws = wb.get_active_sheet()
+    rownum = 2
+    # fill in the column header row
+    for i in range(0, len(KEY_LIST)):
+        ws.cell(row=1, column=i + 1).value = KEY_LIST[i]
+    for item in datalist:
+        try:
+            for i in range(0, len(KEY_LIST)):
+                ws.cell(row=rownum, column=i + 1).value = item[KEY_LIST[i]]
+        except KeyError as ke:
+            print("IT was himmm what caused the keyError>>> " + ws.cell(row=rownum, column=1).value)
+        rownum += 1
+    wb.save(filename)
+
+
+
+
+size_dict = json.load(open('JSON Files/size_by_letter_code.json'))
+brand_dict = json.load(open('JSON Files/brandlookup.json', 'r'))
+state_by_distributor_dict = json.load(open('JSON Files/state_by_distributor.json', 'r'))
+region_by_state_dict = json.load(open('JSON Files/regionbystate.json'))
+sales_rep_by_region = json.load(open('JSON Files/regionrepbyregion.json'))
+varietal_by_code = json.load(open('JSON Files/varietalbycode.json'))
+naluai_brand_list = json.load(open('JSON Files/naluai_brand_list.json'))
+gangel_brand_list = json.load(open('JSON Files/gangel_brand_list.json'))
+swift_brand_list = json.load(open('JSON Files/swift_brand_list.json'))
+jackson_brand_list = json.load(open('JSON Files/jackson_brand_list.json'))
+owens_brand_list = json.load(open('JSON Files/owens_brand_list.json'))
+nelson_brand_list = json.load(open('Json Files/nelson_brand_list.json'))
+brand_manager_by_brand = json.load(open('JSON Files/brand_manager_by_brand.json', 'r'))
+
+def remove_vintage(n):
+    return n[0:-3] + n[-1]
 
 # reads in raw excel data and output a list of dictionary objects for each row
-def build_raw_list(sh):
+
+def build_raw_list(filename):
     # Iterate through each row in worksheet and fetch values into dict
+    wb = openpyxl.load_workbook(filename)
+    sh = wb.get_active_sheet()
     i = 0
     temp_list = []
     row_tuples = sh.rows
     for rt in row_tuples[2:]:
-        #TODO create a third-party vendor list for items like "Kirkland"
         if rt[2].value != 'PAC' and "CONSUMER" not in rt[0].value and "Kirkland" not in rt[4].value and "zBarter" not in \
                 rt[0].value and rt[2].value != "" and 'wine country connect' not in rt[0].value.lower():
             data_item = {}
@@ -93,31 +116,37 @@ def build_raw_list(sh):
     return temp_list
 
 
-def fix_sales_rep(obj_dict, salesrep_by_region, naluai_brand_list,
-                  gangle_brand_list, swift_brand_list, jackson_brand_list,
-                  owens_brand_list, nelson_brand_list):
+# def fix_sales_rep_initial(obj_dict):
+#     region = obj_dict['Sales Rep']
+#     brand = obj_dict['Brand']
+#     category = obj_dict['Category']
+#     if region in sales_rep_by_region:
+#         obj_dict['Sales/Key Acct Rep'] = sales_rep_by_region[region]
+#     if brand in jackson_brand_list:
+#         obj_dict['Sales/Key Acct Rep'] = 'Jackson'
+#     if brand in owens_brand_list:
+#         obj_dict['Sales/Key Acct Rep'] = 'Owens'
+#     if brand in gangel_brand_list:
+#         obj_dict['Sales/Key Acct Rep'] = 'Gangel'
+#     if brand in naluai_brand_list:
+#         obj_dict['Sales/Key Acct Rep'] = 'Naluai'
+#     if brand in swift_brand_list:
+#         obj_dict['Sales/Key Acct Rep'] = 'Swift'
+#     if brand in nelson_brand_list:
+#         obj_dict['Sales/Key Acct Rep'] = 'Nelson'
+#     if category == 'Total Wine' or 'total wine' in obj_dict['Distributor'].lower():
+#         obj_dict['Sales/Key Acct Rep'] = 'Bukoskey'
+#     return obj_dict
+
+
+def fix_sales_rep(obj_dict):
     region = obj_dict['Sales Rep']
     brand = obj_dict['Brand']
     category = obj_dict['Category']
-    if region in salesrep_by_region:
-        obj_dict['Sales/Key Acct Rep'] = salesrep_by_region[region]
-    if brand in jackson_brand_list:
-        print('Jackson')
-        obj_dict['Sales/Key Acct Rep'] = 'Jackson'
-    if brand in owens_brand_list:
-        obj_dict['Sales/Key Acct Rep'] = 'Owens'
-    if brand in gangle_brand_list:
-        print('Gangel')
-        obj_dict['Sales/Key Acct Rep'] = 'Gangel'
-    if brand in naluai_brand_list:
-        print('Naluai')
-        obj_dict['Sales/Key Acct Rep'] = 'Naluai'
-    if brand in swift_brand_list:
-        obj_dict['Sales/Key Acct Rep'] = 'Swift'
-        print('swift')
-    if brand in nelson_brand_list:
-        obj_dict['Sales/Key Acct Rep'] = 'Nelson'
-        print('Nelson')
+    if region in sales_rep_by_region:
+        obj_dict['Sales/Key Acct Rep'] = sales_rep_by_region[region]
+    if brand in brand_manager_by_brand:
+        obj_dict['Sales/Key Acct Rep'] = brand_manager_by_brand[brand]
     if category == 'Total Wine' or 'total wine' in obj_dict['Distributor'].lower():
         obj_dict['Sales/Key Acct Rep'] = 'Bukoskey'
     return obj_dict
@@ -125,38 +154,27 @@ def fix_sales_rep(obj_dict, salesrep_by_region, naluai_brand_list,
 
 def generate_clean_data_list(rdl):
     scrubbed_data_list = []
-    brand_dict = json.load(open('JSON Files/brandlookup.json', 'r'))
-    state_by_distributor_dict = json.load(open('JSON Files/state_by_distributor.json', 'r'))
-    region_by_state_dict = json.load(open('JSON Files/regionbystate.json'))
-    sales_rep_by_region = json.load(open('JSON Files/regionrepbyregion.json'))
-    varietal_by_code = json.load(open('JSON Files/varietalbycode.json'))
-    naluai_brand_list = json.load(open('JSON Files/naluai_brand_list.json'))
-    gangel_brand_list = json.load(open('JSON Files/gangel_brand_list.json'))
-    swift_brand_list = json.load(open('JSON Files/swift_brand_list.json'))
-    jackson_brand_list = json.load(open('JSON Files/jackson_brand_list.json'))
-    owens_brand_list = json.load(open('JSON Files/owens_brand_list.json'))
-    nelson_brand_list = json.load(open('Json Files/nelson_brand_list.json'))
 
     for raw_dict in rdl:
         clean_objdict = {}
-        #TODO add if statements to control what happens when itemcode is not in the brand_dict
         clean_objdict['Item code w/o vintage'] = remove_vintage(raw_dict['Item No.'])
         clean_objdict['Brand Code'] = raw_dict['Item No.'][:3]
         clean_objdict['Distributor'] = distributor = raw_dict['Customer Name']
         clean_objdict['State'] = raw_dict['Ship-to State']
         clean_objdict['Varietal Code'] = var = raw_dict['Item No.'][3:6]
+
         if var in varietal_by_code:
             clean_objdict['Varietal'] = varietal_by_code[clean_objdict['Varietal Code']]
         else:
             clean_objdict['Varietal'] = raw_dict['Varietal Code']
-        # TODO this may need to be drawn from the region by state dictionary, testing req'd
-        if raw_dict['Ship-to State'] != '':
+
+        if raw_dict['Ship-to State'] != '' and raw_dict['Ship-to State'] in region_by_state_dict:
             clean_objdict['Sales Rep'] = region_by_state_dict[raw_dict['Ship-to State']]
         else:
             clean_objdict['Sales Rep'] = raw_dict['Salesperson Code']
+
         clean_objdict['Item ID'] = itemid = raw_dict['Item No.']
         clean_objdict['Item'] = raw_dict['Description']
-        #TODO this SKU Tag assignment doesn't follow the formula, need to find out what that is.
         if 'f8' not in clean_objdict['Item ID'].lower():
             clean_objdict['Item Pre'] = raw_dict['Item No.'][:9]
         else:
@@ -192,6 +210,9 @@ def generate_clean_data_list(rdl):
                 clean_objdict['SKU Cost'] = brand_dict[itemid][distributor]['SKU Cost']
                 clean_objdict['Sales Rep'] = brand_dict[itemid][distributor]['Sales Rep']
                 clean_objdict['SKU DA'] = brand_dict[itemid][distributor]['SKU DA']
+                clean_objdict['Total DA$'] = brand_dict[itemid][distributor]['Total DA$']
+                clean_objdict['GP$/CASE'] = brand_dict[itemid][distributor]['GP$/CASE']
+                clean_objdict['Total GP$'] = brand_dict[itemid][distributor]['Total GP$']
 
             else:
                 # pick the first item out of the dictionary and use it's values to take
@@ -203,12 +224,16 @@ def generate_clean_data_list(rdl):
                 clean_objdict['SKU Tag'] = reference_item['SKU Tag']
                 clean_objdict['Portfolio'] = reference_item['Portfolio']
                 clean_objdict['Category'] = reference_item['Category']
-                clean_objdict = fix_sales_rep(clean_objdict, sales_rep_by_region, naluai_brand_list, gangel_brand_list,
-                                              swift_brand_list, jackson_brand_list, owens_brand_list, nelson_brand_list)
+                clean_objdict = fix_sales_rep(clean_objdict)
+
                 #TODO figure out a more elegent solution
                 clean_objdict['ISM'] = reference_item['ISM']
                 clean_objdict['IBM'] = reference_item['IBM']
                 clean_objdict['SKU Cost'] = reference_item['SKU Cost']
+                clean_objdict['SKU DA'] = reference_item['SKU DA']
+                clean_objdict['Total DA$'] = reference_item['Total DA$']
+                clean_objdict['GP$/CASE'] = reference_item['GP$/CASE']
+                clean_objdict['Total GP$'] = reference_item['Total GP$']
         #otherwise the itemcode is not yet in the database
         else:
             new_items.append(itemid)
@@ -221,28 +246,36 @@ def generate_clean_data_list(rdl):
                     standby_brand = brand_dict[key][list(brand_dict[key])[0]]['Brand']
                     continue_searching = False
                 if itemid[:7] in key:
+                    #collect a list of keys that match the lineitem's brand
                     key_list.append(key)
+            #if this is a new brand...
             if len(key_list) == 0:
                 clean_objdict['Brand'] = standby_brand
-                clean_objdict['SKU Tag'] = standby_brand + clean_objdict['Varietal'] + clean_objdict['Size']
+                if standby_brand == '#N/A':
+                    clean_objdict['SKU Tag'] = '#N/A'
+                else:
+                    clean_objdict['SKU Tag'] = standby_brand + clean_objdict['Varietal'] + clean_objdict['Size']
                 clean_objdict['Portfolio'] = '#N/A'
                 clean_objdict['Category'] = '#N/A'
-                clean_objdict = fix_sales_rep(clean_objdict, sales_rep_by_region, naluai_brand_list,
-                                              gangel_brand_list, swift_brand_list, jackson_brand_list,
-                                              owens_brand_list, nelson_brand_list)
+                clean_objdict = fix_sales_rep(clean_objdict)
                 clean_objdict['ISM'] = '#N/A'
                 clean_objdict['IBM'] = '#N/A'
                 clean_objdict['SKU Cost'] = '#N/A'
+                clean_objdict['SKU DA'] = '#N/A'
+                clean_objdict['Total DA$'] = '#N/A'
+                clean_objdict['GP$/CASE'] = '#N/A'
+                clean_objdict['Total GP$'] = '#N/A'
             else:
                 suitable_data_donor_found = False
                 suitable_donor = None
                 for key in key_list:
+                    #if a distributor relationship is found for this same brand, use that info to fill in blanks
                     if distributor in brand_dict[key]:
                         suitable_data_donor_found = True
                         suitable_donor = brand_dict[key][distributor]
                         break
                 try:
-                    if suitable_data_donor_found:
+                    if suitable_donor != None:
                         clean_objdict['Brand'] = suitable_donor['Brand']
                         clean_objdict['SKU Tag'] = suitable_donor['SKU Tag']
                         clean_objdict['Portfolio'] = suitable_donor['Portfolio']
@@ -251,46 +284,58 @@ def generate_clean_data_list(rdl):
                         clean_objdict['ISM'] = suitable_donor['ISM']
                         clean_objdict['IBM'] = suitable_donor['IBM']
                         clean_objdict['SKU Cost'] = suitable_donor['SKU Cost']
+                        clean_objdict = fix_sales_rep(clean_objdict)
+                        clean_objdict['SKU DA'] = suitable_donor['SKU DA']
+                        clean_objdict['Total DA$'] = suitable_donor['Total DA$']
+                        clean_objdict['GP$/CASE'] = suitable_donor['GP$/CASE']
+                        clean_objdict['Total GP$'] = suitable_donor['Total GP$']
+
                     else:
                         reference_item = brand_dict[key][list(brand_dict[key])[0]]
-                        clean_objdict['Brand'] = reference_item['Brand']
-                        clean_objdict['SKU Tag'] = '#N/A'
+                        clean_objdict['Brand'] = brand = reference_item['Brand']
+                        clean_objdict['SKU Tag'] = brand + " " + clean_objdict['Varietal'] + " " + size_dict[clean_objdict['Size']]
                         clean_objdict['Portfolio'] = '#N/A'
                         clean_objdict['Category'] = '#N/A'
-                        clean_objdict = fix_sales_rep(clean_objdict, sales_rep_by_region, naluai_brand_list,
-                                                      gangel_brand_list, swift_brand_list, jackson_brand_list,
-                                                      owens_brand_list, nelson_brand_list)
+                        clean_objdict = fix_sales_rep(clean_objdict)
                         clean_objdict['ISM'] = '#N/A'
                         clean_objdict['IBM'] = '#N/A'
                         clean_objdict['SKU Cost'] = '#N/A'
+                        clean_objdict['SKU DA'] = '#N/A'
+                        clean_objdict['Total DA$'] = '#N/A'
+                        clean_objdict['GP$/CASE'] = '#N/A'
+                        clean_objdict['Total GP$'] = '#N/A'
                 except KeyError as ke:
                     print('HES the ONE YOU WANt, SEIZE HIM>>' + clean_objdict['Item ID'])
 
         #Initiate data scrub
-        clean_objdict = refine_item_data(clean_objdict,
-                                         region_by_state_dict,
-                                         state_by_distributor_dict)
+        clean_objdict = refine_item_data(clean_objdict)
         if 'Sales/Key Acct Rep' not in clean_objdict:
-            clean_objdict = fix_sales_rep(clean_objdict, sales_rep_by_region, naluai_brand_list,
-                                          gangel_brand_list, swift_brand_list, jackson_brand_list,
-                                          owens_brand_list, nelson_brand_list)
+            clean_objdict = fix_sales_rep(clean_objdict)
             if 'Sales/Key Acct Rep' not in clean_objdict:
-                if raw_dict['Salesperson Code'] in region_spelling_dict:
+                if raw_dict['Salesperson Code'] in REGION_SPELLING_DICT:
                     clean_objdict['Sales/Key Acct Rep'] = sales_rep_by_region[
-                        region_spelling_dict[raw_dict['Salesperson Code']]]
+                        REGION_SPELLING_DICT[raw_dict['Salesperson Code']]]
                 else:
                     state = raw_dict['Ship-to State']
                     if state is not "":
                         clean_objdict['Sales/Key Acct Rep'] = sales_rep_by_region[
-                            region_by_state_dict[raw_dict['Ship-to State']]]
+                        region_by_state_dict[raw_dict['Ship-to State']]]
                     else:
                         clean_objdict['Sales/Key Acct Rep'] = "#N/A"
 
         scrubbed_data_list.append(clean_objdict)
+    i=0
+    nalist = []
+    for object in scrubbed_data_list:
+        if '#N/A' in list(object.values()):
+            i = i +1
+            nalist.append(object['Item ID'])
+    print('i: ', i)
+    print(nalist)
     return scrubbed_data_list
 
 
-def refine_item_data(obj_dict, region_by_state_dict, state_by_distributor_dict):
+def refine_item_data(obj_dict):
     if 'Portfolio' in obj_dict:
         pf = obj_dict['Portfolio'].lower()
     else:
@@ -301,7 +346,6 @@ def refine_item_data(obj_dict, region_by_state_dict, state_by_distributor_dict):
     #switch monterey area items to 'Southwest' region
     if 'monterey' in obj_dict['Distributor'].lower():
         obj_dict['Sales Rep'] = 'Southwest'
-        print('switched monterey to SW')
 
     #fix canada region - Step 11
     if 'canada' in obj_dict['Sales Rep'].lower():
@@ -342,8 +386,8 @@ def refine_item_data(obj_dict, region_by_state_dict, state_by_distributor_dict):
         obj_dict['Sales Rep'] = 'Total Wine'
 
     #fix region spelling - Step 16
-    if obj_dict['Sales Rep'] in region_spelling_dict:
-        obj_dict['Sales Rep'] = region_spelling_dict[obj_dict['Sales Rep']]
+    if obj_dict['Sales Rep'] in REGION_SPELLING_DICT:
+        obj_dict['Sales Rep'] = REGION_SPELLING_DICT[obj_dict['Sales Rep']]
 
     #fix Glazer's distributor title - Step 18
     if 'Glazer' in obj_dict['Distributor'] and 'Texas' in obj_dict['Distributor']:
@@ -374,7 +418,7 @@ def refine_item_data(obj_dict, region_by_state_dict, state_by_distributor_dict):
     if 'grape & grain' in pf:
         if 'total wine' not in obj_dict['Sales Rep'].lower() and 'airlines' not in obj_dict[
             'Sales Rep'].lower() and 'precept house' not in obj_dict['Sales Rep'].lower():
-            if obj_dict['Sales Rep'] in innovation_east:
+            if obj_dict['Sales Rep'] in INNOVATION_EAST:
                 obj_dict['Sales Rep'] = 'Innovation East'
             else:
                 obj_dict['Sales Rep'] = 'Innovation West'
@@ -409,37 +453,15 @@ def refine_item_data(obj_dict, region_by_state_dict, state_by_distributor_dict):
     return obj_dict
 
 
-def write_to_excel(filename, datalist):
-    wb = openpyxl.Workbook()
-    ws = wb.get_active_sheet()
-    rownum = 2
-    # fill in the column header row
-    for i in range(0, len(uselesslist)):
-        ws.cell(row=1, column=i + 1).value = uselesslist[i]
-    for item in datalist:
-        try:
-            for i in range(0, len(uselesslist)):
-                ws.cell(row=rownum, column=i + 1).value = item[uselesslist[i]]
-        except KeyError as ke:
-            print("IT was himmm what caused the keyError>>> " + ws.cell(row=rownum, column=1).value)
-
-        rownum += 1
-    wb.save(filename)
-
-
 def main():
-    # wbtest = openpyxl.load_workbook('Input/Item Ledger Precept - 7.21.15 - Copy.xlsx')
-    wbtest = openpyxl.load_workbook('Input/Item Ledger Precept - 7.21.15.xlsx')
-    shtest = wbtest.get_active_sheet()
-
-    raw_data_list = build_raw_list(shtest)
-
+    start_time = time.time()
+    fname = 'Input/Item Ledger Precept - 7.21.15.xlsx'
+    raw_data_list = build_raw_list(fname)
     clean_data = generate_clean_data_list(raw_data_list)
-
     with open('JSON Files/data.json', 'w') as f:
         f.write(json.dumps(clean_data, sort_keys=True, indent=4 * ' '))
-
-    write_to_excel('Cleaned data file/megatest17.xlsx', clean_data)
+    write_to_excel('Cleaned Files/megatest18.xlsx', clean_data)
+    print("--- %s seconds ---" % (time.time() - start_time))
 
 
 if __name__ == '__main__':
