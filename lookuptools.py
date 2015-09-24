@@ -5,7 +5,7 @@ import simplejson as json
 
 
 def build_brand_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/mainDB.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/database.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     brand_dict = {}
     for rownum in range(2, ws.get_highest_row() + 1):
@@ -51,10 +51,11 @@ def build_brand_lookup():
 
     with open('JSON Files/brandlookup.json', 'w') as f:
         f.write(json.dumps(brand_dict, sort_keys=True, indent=4 * ' '))
+    print('brand lookup built')
 
 
 def build_innovation_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/database.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     innovation_dict = {}
     for rownum in range(2, ws.get_highest_row() + 1):
@@ -67,7 +68,7 @@ def build_innovation_lookup():
 
 
 def build_state_by_distributor_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/database.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     state_by_distributor_dict = {}
     # TODO: account for the distributors that operate in multiple states,
@@ -79,7 +80,7 @@ def build_state_by_distributor_lookup():
 
 
 def build_region_by_state_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/database.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     region_by_state_dict = {}
     for rownum in range(2, ws.get_highest_row() + 1):
@@ -103,7 +104,7 @@ def build_regionrep_by_region_lookup():
         f.write(json.dumps(temp_dict))
 
 def build_varietal_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/database.xlsx')
     ws = wb.get_sheet_by_name('Sheet1')
     varietal_by_code = {}
     for rownum in range(2, ws.get_highest_row() + 1):
@@ -115,50 +116,9 @@ def build_varietal_lookup():
     with open('JSON Files/varietalbycode.json', 'w') as f:
         f.write(json.dumps(varietal_by_code, sort_keys=True, indent=4 * ' '))
 
-def build_naluai_brands_list():
-    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
-    ws = wb.get_sheet_by_name('Naluai Brands')
-    naluai_brands = []
-    for rownum in range(2, ws.get_highest_row() +1):
-        brand = ws.cell(row=rownum, column=1).value
-        naluai_brands.append(brand)
-    with open('JSON Files/naluai_brand_list.json', 'w') as f:
-        f.write(json.dumps(naluai_brands, sort_keys=True, indent=4 * " "))
-
-def build_gangel_brands_list():
-    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
-    ws = wb.get_sheet_by_name('Gangel Brands')
-    gangel_brands = []
-    for rownum in range(2, ws.get_highest_row() +1):
-        brand = ws.cell(row=rownum, column=1).value
-        gangel_brands.append(brand)
-    with open('JSON Files/gangel_brand_list.json', 'w') as f:
-        f.write(json.dumps(gangel_brands, sort_keys=True, indent=4 * " "))
-
-
-def build_swift_brands_list():
-    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
-    ws = wb.get_sheet_by_name('Swift Brands')
-    swift_brands = []
-    for rownum in range(2, ws.get_highest_row() + 1):
-        brand = ws.cell(row=rownum, column=1).value
-        swift_brands.append(brand)
-    with open('JSON Files/swift_brand_list.json', 'w') as f:
-        f.write(json.dumps(swift_brands, sort_keys=True, indent=4 * " "))
-
-def build_salesperson_brands_list(salesperson_name):
-    wb = openpyxl.load_workbook('Lookup Tables/Lookup Tables.xlsx')
-    ws = wb.get_sheet_by_name("" + salesperson_name + ' Brands')
-    brands = []
-    for rownum in range(2, ws.get_highest_row() + 1):
-        brand = ws.cell(row=rownum, column=1).value
-        brands.append(brand)
-    with open('JSON Files/' + salesperson_name.lower() + '_brand_list.json', 'w') as f:
-        f.write(json.dumps(brands, sort_keys=True, indent=4 * " "))
-
 
 def build_size_lookup():
-    wb = openpyxl.load_workbook('Lookup Tables/2014 and YTD 2015 Shipment Data File.xlsx')
+    wb = openpyxl.load_workbook('Lookup Tables/database.xlsx')
     ws = wb.get_active_sheet()
     size_dict = {}
     for rownum in range(2, ws.get_highest_row() +1):
@@ -168,6 +128,7 @@ def build_size_lookup():
             size_dict[size_code] = size
     with open('JSON Files/size_by_letter_code.json', 'w') as f:
         f.write(json.dumps(size_dict, sort_keys=True, indent=4 * " "))
+
 
 def build_brand_manager_lookups():
     wb = openpyxl.load_workbook('Lookup Tables/Brand Manager Lookup.xlsx')
@@ -179,8 +140,10 @@ def build_brand_manager_lookups():
             lookup_dict[ws.cell(row=rownum, column=1).value] = brand_manager_name
     with open('JSON Files/brand_manager_by_brand.json', 'w') as f:
         f.write(json.dumps(lookup_dict, sort_keys=True, indent=4 * " "))
+    print('Brand manager lookup built')
 
-build_brand_manager_lookups()
+if __name__ == '__main__':
+    build_brand_lookup()
 
 
 

@@ -1,0 +1,72 @@
+HELP TOPICS
+===========
+
+How do I up date the program database?
+--------------------------------------
+
+There are two excel files used as program references for
+information used to fill in blanks when processing line items.
+These files are located in the "Lookup Tables" folder which
+can be found in the Data Clean installation directory
+(most likelyC:\Program Files (x86)\Data Clean). The excel titled
+"database" contains a thousands of previously processed line items
+taken from the past ~two years of ship data.
+
+If after processing a ledger data file you observe cells containing "#N/A",
+you can fill in these values and update the database so that you will not have
+to fill these values in again in the future. This can be accomplished as follows:
+
+1. Export the results from the program into an excel file using the Export button
+   on the toolbar, or navigating to File>Export, or pressing Ctrl + E.
+
+2. Open this file in excel and fill in all the "#N/A" values and make any corrections
+   to other lines containing erroneous information.
+
+3. Navigate to the "Lookup Table" folder located as described above. Open the "database"
+   excel file and copy in all line items that were edited in the previous step.
+
+4. Save and close the "database" excel file.
+
+5. In the Data Clean window, navigate to Update>Update Database. This process will take
+   up to a couple minutes. If you wish to process another Raw Ledger File using this newly
+   added information, you will have to close and restart Data Clean.
+
+The other database excel file title "Brand Manager Lookup" is used to capture the exclusive
+relationship between some brands and respective brand managers to fill in the "Sales/Key Acct Rep"
+field. If adjustments need to be made to these relationships, each Brand Manager has an
+associated worksheet within this file which can be altered in the following ways:
+
+1. Change of Name: If the name needs to be changed, be sure to change it both on the worksheet tab
+   and the top cell of column A.
+
+2. Delete of Worksheet: If you need to do so, do so.
+
+3. Add a Brand Manager: Just follow the pattern of the other tabs with respect to naming and only
+   using the first column and all is well.
+
+4. Add/Remove a brand from a Brand Managers worksheet: Go ahead. Just keep it in the first column.
+
+After you have completed alterations to the Brand Manager Lookup excel file, close and save. Then
+navigate to Update>Update Brand Manager Lookup.
+
+
+What is there is incorrect/outdated values showing up in the processed data?
+----------------------------------------------------------------------------
+
+This is likely due to outdated or incorrect values in the "database" excel file.
+Filter for the offending values within this file and delete as necessary, then
+update Data Clean as described above.
+
+
+I did the things you said above and bad values are still showing up in the processed file.
+-------------------------------------------------------------------------------------------
+
+Open up your Outlook. Send a description of the problem to daniel.o.rowland@gmail.com and I will
+provide free help. Forever! Seriously, please do this! I will only get better at what I do if I have
+opportunities to follow up on usability problems and hopefully I will continue to save you time and
+effort processing this data.
+
+-Cheers
+
+.dan
+
